@@ -1,5 +1,7 @@
 VULKAN_SDK_PATH = /home/sandro/Downloads/1.1.101.0/x86_64
-CFLAGS = -std=c++17 -I$(VULKAN_SDK_PATH)/include
+STB_IMAGE_PATH = /home/sandro/Downloads/stb_image
+TINY_OBJ_LOADER_PATH = /home/sandro/Downloads/tiny_obj_loader
+CFLAGS = -std=c++17 -I$(VULKAN_SDK_PATH)/include -I$(STB_IMAGE_PATH) -I$(TINY_OBJ_LOADER_PATH)
 LDFLAGS = -L$(VULKAN_SDK_PATH)/lib `pkg-config --static --libs glfw3` -lvulkan
 
 .PHONY: run build clean release add-release-flags
@@ -15,11 +17,11 @@ add-release-flags:
 
 build: main.cpp
 	@mkdir -p bin
-	@g++ $(CFLAGS) $(ADDITIONAL_FLAGS) -o bin/build main.cpp $(LDFLAGS)
+	@g++-8 $(CFLAGS) $(ADDITIONAL_FLAGS) -o bin/build main.cpp $(LDFLAGS)
 
 build-release: main.cpp
 	@mkdir -p bin
-	@g++ $(CFLAGS) -O4 -DNDEBUG -o bin/build main.cpp $(LDFLAGS)
+	@g++-8 $(CFLAGS) -O4 -DNDEBUG -o bin/build main.cpp $(LDFLAGS)
 
 clean:
 	@rm -rf bin/
