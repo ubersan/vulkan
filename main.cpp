@@ -27,8 +27,8 @@
 #include <set>
 #include <unordered_map>
 
-const int WIDTH = 800;
-const int HEIGHT = 600;
+const int WIDTH = 2400;
+const int HEIGHT = 1800;
 
 const std::string MODEL_PATH = "models/chalet.obj";
 const std::string TEXTURE_PATH = "textures/chalet.jpg";
